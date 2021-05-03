@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Casiopea.Views.ProductView">
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0">
+            <Image Source="minidress.png" BackgroundColor="Black" HeightRequest="500" VerticalOptions="StartAndExpand" HorizontalOptions="Fill"/>
+            <Label Text="Titulo producto"/>
+            <Label Text="precio" TextColor="Black" FontAttributes="Bold" FontSize="18" FontFamily="{StaticResource BoldFont}"/>
+            <Label Text="Descripcion" Padding="0,0,0,30"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition  Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <ImageButton  BackgroundColor="Transparent" HorizontalOptions="Start" Grid.Column="0"  Source="fav.png"/>
+                <Button Grid.Column="1" BackgroundColor="Black" TextColor="White" HorizontalOptions="FillAndExpand" Text="Añadir al carrito"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

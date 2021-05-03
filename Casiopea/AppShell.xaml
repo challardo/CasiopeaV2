@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:Casiopea.Views"
+       Title="Casiopea"
+       x:Class="Casiopea.AppShell">
+
+    <Shell.Resources>
+        
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="White" />
+                <!--Menu -->
+                <Setter Property="Shell.ForegroundColor" Value="#EAB464" />
+                <!--Titulo -->
+
+                <Setter Property="Shell.TitleColor" Value="Black" />
+                <Setter Property="Shell.DisabledColor" Value="Gray" />
+                <Setter Property="Shell.UnselectedColor" Value="#EAB464" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="White" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#EAB464"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="#62153B"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+
+
+            <Style Class="FlyoutItemLabelStyle" TargetType="Label">
+                <!--Color del texto del menu-->
+                <Setter Property="TextColor" Value="#62153B"></Setter>
+            </Style>
+            <Style Class="FlyoutItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="White"></Setter>
+
+            </Style>
+
+            <!--<Color x:Key="ThemeColor">#000</Color>
+            <Color x:Key="GrayColor">Gray</Color>
+            <Color x:Key="BgColor">#F0F0F0</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource BgColor}"/>
+                <Setter Property="Shell.ForegroundColor" Value="{StaticResource ThemeColor}"/>
+                <Setter Property="Shell.UnselectedColor" Value="{StaticResource GrayColor}"/>
+                <Setter Property="Shell.TitleColor" Value="{StaticResource ThemeColor}"/>
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource BgColor}"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource ThemeColor}"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource GrayColor}"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="Black"/>
+               
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource ThemeColor}"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}"/>-->
+           
+        </ResourceDictionary>
+    </Shell.Resources>
+    <Shell.FlyoutHeader>
+        <Grid HeightRequest="150">
+            <Image
+            Aspect="AspectFit"
+            HeightRequest="100"
+            HorizontalOptions="Center"
+                BackgroundColor="#EAB464"
+            Source="casiopeaLogo.png" />
+          
+
+        </Grid>
+    </Shell.FlyoutHeader>
+
+
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Shop" Icon="shop.png" Route="ShopPage" ContentTemplate="{DataTemplate local:ShopPage}" />
+        <ShellContent Title="Explore" Icon="explore.png" ContentTemplate="{DataTemplate local:ExplorePage}" />
+        <ShellContent Title="Collections" Icon="collections.png" ContentTemplate="{DataTemplate local:CollectionsPage}" />
+    </FlyoutItem>
+ 
+
+
+</Shell>

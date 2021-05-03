@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+           Title="Shop"
+         
+             x:Class="Casiopea.Views.ShopPage">
+    <ContentPage.ToolbarItems >
+        <ToolbarItem IconImageSource="heart.png" />
+        
+    </ContentPage.ToolbarItems>
+    <ScrollView  >
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+     
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+       
+        <CarouselView x:Name="cvBanners"
+                                    HeightRequest="270" ItemsSource="{Binding Banners}" HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="StartAndExpand" IsScrollAnimated="True">
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Image Source="{Binding Image}" Aspect="Fill" HorizontalOptions="FillAndExpand"/>
+                    <Image Source="overlay.png" Aspect="Fill" HorizontalOptions="FillAndExpand"/>
+                    <StackLayout Margin="30,20,0,0" Spacing="15" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                        <Label Text="{Binding Heading}" TextColor="White" FontSize="12" FontFamily="{StaticResource ThinFont}"/>
+                        <BoxView BackgroundColor="White" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="1" WidthRequest="50"/>
+                        <StackLayout>
+                            <Label Text="{Binding Message}" TextColor="White" FontSize="35" FontFamily="{StaticResource PlayfairNormal}"/>
+                            <Label Text="{Binding Caption}" TextColor="White" FontSize="12" FontFamily="{StaticResource LightFont}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+    </CarouselView>
+        
+  
+        <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="End" Margin="10,10" >
+
+            <ImageButton Source="fav.png" Aspect="AspectFit" HeightRequest="32" WidthRequest="30" VerticalOptions="Center"/>
+            <ImageButton Source="cartFilled.png" Aspect="AspectFit" HeightRequest="32" WidthRequest="30" VerticalOptions="Center"/>
+        </StackLayout>
+     
+
+            <StackLayout Grid.Row="2" >
+                <ScrollView>
+                    <StackLayout>
+                      
+                        <Label Text="Best Sellers"/>
+                        <RefreshView x:Name="refreshView" IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
+                            <CollectionView   x:Name="lstProductos" SelectionMode="Single" SelectionChanged="lstProductos_SelectionChanged">
+
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                                </CollectionView.ItemsLayout>
+
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Padding="10" Margin="12">
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="300" />
+                                                <RowDefinition Height="30" />
+                                            </Grid.RowDefinitions>
+
+                                            <ImageButton  Source="{Binding Imagen}"
+                                   Grid.Row="0"
+                                   Aspect="AspectFill"
+                                    />
+
+                                            <StackLayout Grid.Row="1">
+
+                                                <Label x:Name="Identificador" Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       Text="{Binding ProductoId}"
+                                       FontAttributes="Bold" />
+
+
+                                                <Label Text="{Binding Precio}"
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       VerticalOptions="Start"
+                                       FontAttributes="Italic" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                        </RefreshView>
+                        <Label Text="Gala"/>
+                        <CollectionView   x:Name="lstProductos2" SelectionMode="Single" SelectionChanged="lstProductos_SelectionChanged">
+
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" Span="2" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="10" Margin="12">
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="300" />
+                                            <RowDefinition Height="30" />
+                                        </Grid.RowDefinitions>
+
+                                        <ImageButton  Source="{Binding Imagen}"
+                                   Grid.Row="0"
+                                   Aspect="AspectFill"
+                                    />
+
+                                        <StackLayout Grid.Row="1">
+
+                                            <Label x:Name="Identificador" Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       Text="{Binding ProductoId}"
+                                       FontAttributes="Bold" />
+
+
+                                            <Label Text="{Binding Precio}"
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       VerticalOptions="Start"
+                                       FontAttributes="Italic" />
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </ScrollView>
+
+                <!--<RefreshView x:Name="refreshView" IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
+                    <CollectionView   x:Name="lstProductos" SelectionMode="Single" SelectionChanged="lstProductos_SelectionChanged">
+
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="2" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10" Margin="12">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="300" />
+                                        <RowDefinition Height="30" />
+                                    </Grid.RowDefinitions>
+
+                                    <ImageButton  Source="{Binding Imagen}"
+                                   Grid.Row="0"
+                                   Aspect="AspectFill"
+                                    />
+
+                                    <StackLayout Grid.Row="1">
+
+                                        <Label x:Name="Identificador" Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       Text="{Binding Nombre}"
+                                       FontAttributes="Bold" />
+
+
+                                        <Label Text="{Binding Precio}"
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       VerticalOptions="Start"
+                                       FontAttributes="Italic" />
+                                    </StackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>-->
+            </StackLayout>
+       
+
+    </Grid>
+    </ScrollView>
+
+</ContentPage>
